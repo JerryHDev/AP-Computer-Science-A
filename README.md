@@ -2,7 +2,7 @@
 
 Jerry Huang's AP Computer Science A projects and exercises.
 
-Palo Alto Senior High School
+Palo Alto High School
 
 Junior Year
 
