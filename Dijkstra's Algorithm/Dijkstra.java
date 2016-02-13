@@ -21,8 +21,6 @@ import java.util.PriorityQueue;
  * representing the shortest path between the nodes represented by the argument string and the start node within the 
  * graph implicitly represented by the argument to the constructor of the Dijksta object.
  */
-
-
 public class Dijkstra {
 	
 	public HashMap<String, String> path;
@@ -65,6 +63,7 @@ public class Dijkstra {
 		
 		String nextNode = "";
 		
+		// Run dijkstra until all nodes have been selected
 		while (!allNodesSelected()) {
 		
 			System.out.println("\nSelected node: " + selectedNode);
@@ -78,8 +77,9 @@ public class Dijkstra {
 				= nodeDistances.get(selectedNode).get(nextNode); // distance from current node to destination node
 				
 				double accumulatedDistance 
-				= currentNodeDistance + dv.get(nodes.indexOf(selectedNode)); // total distance from start node to destination node
+				= currentNodeDistance + dv.get(nodes.indexOf(selectedNode)); // total distance from start node to destination node: dv
 				
+				// Updates unselected nodes
 				if (accumulatedDistance < dv.get(nodes.indexOf(nextNode)) && k.get(nodes.indexOf(nextNode)) == false) {
 					dv.set(nodes.indexOf(nextNode), accumulatedDistance);
 					prev.set(nodes.indexOf(nextNode), selectedNode);
@@ -90,7 +90,7 @@ public class Dijkstra {
 				dv.get(nodes.indexOf(nextNode)), prev.get(nodes.indexOf(nextNode)));
 			}
 			
-			// Selects new node and iterates through new node adjacencies
+			// Selects next node and iterates through new node adjacencies
 			selectedNode = selectMinDistance();
 			keySetIterator = nodeDistances.get(selectedNode).keySet().iterator();
 		}
@@ -105,7 +105,7 @@ public class Dijkstra {
 	 */
 	public String selectMinDistance() {
 		
-		double minDistance = (double)distancePriorityQueue.poll();
+		double minDistance = (double)distancePriorityQueue.poll(); // Retrieves and removes minimum element in queue
 		String minNode = nodes.get(dv.indexOf(minDistance));
 		
 		System.out.println("\nMinimum distance node: " + minNode);

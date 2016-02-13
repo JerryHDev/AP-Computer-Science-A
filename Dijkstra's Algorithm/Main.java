@@ -106,16 +106,15 @@ public class Main {
 		
 		
 		// Initialize Dijkstra object
-		String startNode = "G";
-		String destNode = "E";
+		String startNode = "C";
 		Dijkstra myD = new Dijkstra(threeNodes.nodeDistances, startNode);
 		
 		
 		// Shortest path between nodes represented by the argument string 
 		//and the start node within the graph implicitly represented by the 
 		//argument to the constructor of the Dijkstra object.
-		ArrayList<String> path = Shorty.next("H", myD);
-		System.out.println(path);
+		ArrayList<String> path = Shorty.next("D", myD);
+		System.out.println("Shortest path: " + path);
 		
 	}
 }
